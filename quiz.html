@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(to right, #8e9eab, #eef2f3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .main_container {
+            width: 30%;
+            padding: 20px;
+            margin: 20px;
+            background-image: linear-gradient(#c9d6ff, #e2e2e2);
+            border-radius: 10px;
+        }
+
+        h1 {
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: rgb(141, 141, 235);
+            font-size: 20px;
+            margin-left: 50px;
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main_container">
+            <!-- <form action=""> -->
+            <h1 class="question">Question</h1>
+            <ul>
+                <li>
+                    <input type="radio" name="answer" id="ans1" class="answer">
+                    <label for="ans1" id="option1">question</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans2" class="answer">
+                    <label for="ans2" id="option2">question</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans3" class="answer">
+                    <label for="ans3" id="option3">question</label>
+                </li>
+                <li>
+                    <input type="radio" name="answer" id="ans4" class="answer">
+                    <label for="ans4" id="option4">question</label>
+                </li>
+            </ul>
+            <button id="submit">submit</button>
+            <div id="score"></div>
+            <!-- </form> -->
+        </div>
+    </div>
+</body>
+<script>
+    array = [
+        question1 = {
+            question: "who is anand",
+            option1: "aaa",
+            option2: "bbb",
+            option3: "ccc",
+            option4: "ddd",
+            ans: "ans2"
+        },
+        question2 = {
+            question: "who is swapnil",
+            option1: "bbb",
+            option2: "bbb",
+            option3: "ccc",
+            option4: "ddd",
+            ans: "ans1"
+        },
+        question3 = {
+            question: "who is purushottam",
+            option1: "ccc",
+            option2: "bbb",
+            option3: "ccc",
+            option4: "ddd",
+            ans: "ans3"
+        },
+        question4 = {
+            question: "who is akshay",
+            option1: "ddd",
+            option2: "bbb",
+            option3: "ccc",
+            option4: "ddd",
+            ans: "ans4"
+        },
+    ];
+    console.log(array[1]);
+
+    let question = document.querySelector(".question")
+    let answer1 = document.querySelector("#option1")
+    let answer2 = document.querySelector("#option2")
+    let answer3 = document.querySelector("#option3")
+    let answer4 = document.querySelector("#option4")
+    // let selecte1 = document.querySelector("#ans1")
+    // let selecte2 = document.querySelector("#ans2")
+    // let selecte3 = document.querySelector("#ans3")
+    // let selecte4 = document.querySelector("#ans4")
+    let btn = document.querySelector("#submit")
+    let ss = document.querySelector("#score")
+    const selecte = document.querySelectorAll(".answer")
+
+
+    let questioncount = 0;
+    let score = 0;
+
+    // console.log(option1);
+    loadfunction()
+
+    function scoreing() {
+        let answer;
+        // const selecte = document.querySelectorAll(".answer")
+
+        selecte.forEach(function (selectele) {
+            if (selectele.checked) {
+                answer = selectele.id;
+            }
+        });
+        return answer;
+    };
+
+    function loadfunction() {
+        question.innerHTML = array[questioncount].question;
+        // document.querySelectorAll(".answer").innerHTML = array[0].option1;
+        answer1.innerHTML = array[questioncount].option1;
+        answer2.innerHTML = array[questioncount].option2;
+        answer3.innerHTML = array[questioncount].option3;
+        answer4.innerHTML = array[questioncount].option4;
+        // questioncount += 1
+    }
+    btn.addEventListener("click", function () {
+
+        const checkanswer = scoreing();
+        console.log(checkanswer);
+        if (checkanswer == array[questioncount].ans) {
+            score++
+            document.querySelector('#score').innerHTML = score
+        }
+
+        // question.innerHTML = array[questioncount].question;
+        // answer1.innerHTML = array[questioncount].option1;
+        // answer2.innerHTML = array[questioncount].option2;
+        // answer3.innerHTML = array[questioncount].option3;
+        // answer4.innerHTML = array[questioncount].option4;
+
+        questioncount += 1
+        loadfunction()
+
+        // if () {
+
+
+        // } else {
+
+        // }
+
+
+
+        // question.innerHTML = array[1].question;
+        // answer1.innerHTML = array[1].option1;
+        // option2.innerHTML = array[1].option2;
+        // option3.innerHTML = array[1].option3;
+        // option4.innerHTML = array[1].option4;
+
+    })
+
+</script>
+
+</html>
